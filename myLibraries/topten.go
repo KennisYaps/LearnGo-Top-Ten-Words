@@ -24,25 +24,28 @@ func tabulateWords(text *[]string) map[string]int {
 	return grouped
 }
 
-type category struct {
+// Category ...
+type Category struct {
 	Key   string
 	Value int
 }
 
-var categoriesArray []category
+var categoriesArray []Category
 
-func convertToArray(m *map[string]int) []category {
+func convertToArray(m *map[string]int) []Category {
 	for key, value := range *m {
-		categoriesArray = append(categoriesArray, category{key, value})
+		categoriesArray = append(categoriesArray, Category{key, value})
 	}
 	return categoriesArray
 }
-func sortBasedOnValues(arr []category) {
+func sortBasedOnValues(arr []Category) {
 	sort.Slice(arr, func(i, j int) bool {
 		return arr[i].Value > arr[j].Value
 	})
 }
-func GetTopTenWords(input *string) []category {
+
+// GetTopTenWords ...
+func GetTopTenWords(input *string) []Category {
 	if len(*input) == 0 {
 		return nil
 	}
@@ -51,11 +54,11 @@ func GetTopTenWords(input *string) []category {
 	convertToArray(&tabulate)
 	sortBasedOnValues(categoriesArray)
 
-	var topTenWords []category
+	var TopTenWords []Category
 	for index, word := range categoriesArray {
 		if index < 10 {
-			topTenWords = append(topTenWords, category{word.Key, word.Value})
+			TopTenWords = append(TopTenWords, Category{word.Key, word.Value})
 		}
 	}
-	return topTenWords
+	return TopTenWords
 }
