@@ -1,6 +1,8 @@
 # LearnGo-Top-Ten-Words
 ## Task 
-
+>Please produce a small serverlet that accepts as input a body of text, such as that from a book, and returns the top ten most-used words along with how many times they occur in the text.
+## Glitch 
+It works the 1st round. But 2nd round onwards, it will add the 2nd round input to the previous round and return both *Top Ten Most Used Words*
 ## Learnings
 *https://golang.org/doc/articles/wiki/#tmp_6*
 1. `http.HandleFunc("/", handler)` :
@@ -59,7 +61,10 @@ If `s` does not contain `sep` and `sep` is not empty, Split returns a slice of l
 *https://golang.org/pkg/strings/#Split*
 
 16. Cant compare slice vs slice. Need to use `for range` to loop and compare each element
-## Dont understand
+## Dont Understand
 1. `t.Execute()` and `t.ExecuteTeplate()`
 
 2. How to get the whole url path. eg. http://localhost:8080/results/hello .`r.URL.Path` will only return /results instead of /results/hello
+
+3. How to test `html/template`
+
