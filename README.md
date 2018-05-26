@@ -4,8 +4,8 @@
 ## Learnings
 *From https://golang.org/doc/articles/wiki/#tmp_6*
 1. `http.HandleFunc("/", handler)`
-
-`http.HandleFunc` tells the http package to handle all requests to the web root ("/") with `handler`.
+ 
+   `http.HandleFunc` tells the http package to handle all requests to the web root ("/") with `handler`.
 
 2. `http.ListenAndServe(":8080", nil)`
 
