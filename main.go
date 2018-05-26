@@ -8,13 +8,11 @@ import (
 	"github.com/yappps/LearnGo-Top-Ten-Words/myLibraries"
 )
 
+var templates = template.Must(template.ParseFiles("templates/index.html", "templates/results.html"))
+
 func renderTemplate(w http.ResponseWriter, tmpl string, c *[]topten.Category) {
-	t, err := template.ParseFiles("templates/" + tmpl + ".html")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	err = t.Execute(w, c)
+	// [Qns]: why `err := templates.ExecuteTemplate(w, "templates/"+tmpl+".html", c)` is wrong
+	err := templates.ExecuteTemplate(w, tmpl+".html", c)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
