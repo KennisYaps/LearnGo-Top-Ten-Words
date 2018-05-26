@@ -38,6 +38,9 @@ The function template.Must is a convenience wrapper that panics when passed a no
 If there is no match, the return value is an empty string, but it will also be empty if the regular expression successfully matches an empty string. Use `FindStringIndex` or `FindStringSubmatch` if it is necessary to distinguish these cases. 
 Both `FindStringIndex` and `FindStringSubmatch` will return `nil` instead if there is no match
 *From https://golang.org/pkg/regexp/#Regexp.FindString*
+
+12. `request.FormValue()`: 
+To get the form data
 ## Dont understand
 1. `t.Execute()` and `t.ExecuteTeplate()`
 
