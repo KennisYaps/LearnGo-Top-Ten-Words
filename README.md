@@ -39,8 +39,25 @@ If there is no match, the return value is an empty string, but it will also be e
 Both `FindStringIndex` and `FindStringSubmatch` will return `nil` instead if there is no match
 *From https://golang.org/pkg/regexp/#Regexp.FindString*
 
-12. `request.FormValue()`: 
+12. `request.FormValue()` : 
 To get the form data
+
+13.  `func (*Regexp) ReplaceAllString` :
+syntax: `func (re *Regexp) ReplaceAllString(src, repl string) string`.
+`ReplaceAllString` returns a **copy** of `src`, replacing matches of the Regexp with the replacement string `repl`. Inside `repl`, `$` signs are interpreted as in Expand, so for instance $1 represents the text of the first submatch.
+*From https://golang.org/pkg/regexp/#Regexp.ReplaceAllString*
+
+14. `func ToLower` :
+syntax:`func ToLower(s string) string`.
+ToLower returns a **copy** of the string `s` with all Unicode letters mapped to their lower case.
+*From https://golang.org/pkg/strings/#ToLower*
+
+15. `func Split` :
+syntax: `func Split(s, sep string) []string`.
+Split slices `s` into all substrings separated by `sep` and **returns a slice** of the substrings between those separators.
+If `s` does not contain `sep` and `sep` is not empty, Split returns a slice of length 1 whose only element is `s`.
+
+*From https://golang.org/pkg/strings/#Split*
 ## Dont understand
 1. `t.Execute()` and `t.ExecuteTeplate()`
 
