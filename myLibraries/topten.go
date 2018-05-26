@@ -6,7 +6,9 @@ import (
 	"strings"
 )
 
-func convertToSlice(input *string) []string {
+
+// ConvertToSlice ...
+func ConvertToSlice(input *string) []string {
 	re := regexp.MustCompile("[^a-zA-Z0-9 ]")
 	removeSpecialCharacters := re.ReplaceAllString(*input, "")
 	toLowerCase := strings.ToLower(removeSpecialCharacters)
@@ -14,8 +16,8 @@ func convertToSlice(input *string) []string {
 	text := strings.Split(toLowerCase, " ")
 	return text
 }
-
-func tabulateWords(text *[]string) map[string]int {
+// TabulateWords ...
+func TabulateWords(text *[]string) map[string]int {
 	grouped := make(map[string]int)
 	// [Qns]: why does `tabulate[word] = (tabulate[word] || 0) + 1` does not work`
 	for _, word := range *text {
@@ -49,8 +51,8 @@ func GetTopTenWords(input *string) []Category {
 	if len(*input) == 0 {
 		return nil
 	}
-	text := convertToSlice(input)
-	tabulate := tabulateWords(&text)
+	text := ConvertToSlice(input)
+	tabulate := TabulateWords(&text)
 	convertToArray(&tabulate)
 	sortBasedOnValues(categoriesArray)
 
