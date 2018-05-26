@@ -20,7 +20,7 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request)) http.HandlerFunc {
 			http.NotFound(w, r)
 			return
 		}
-		fn(w, r) 
+		fn(w, r)
 	}
 }
 
@@ -33,16 +33,19 @@ func renderTemplate(w http.ResponseWriter, tmpl string, c *[]topten.Category) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
-func homePageHandler(w http.ResponseWriter, r *http.Request) {
+
+// HomePageHandler ...
+func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "index", nil)
 }
-func resultPageHandler(w http.ResponseWriter, r *http.Request) {
+// ResultPageHandler ...
+func ResultPageHandler(w http.ResponseWriter, r *http.Request) {
 	input := r.FormValue("userInput")
 	results := topten.GetTopTenWords(&input)
 	renderTemplate(w, "results", &results)
 }
 func main() {
-	http.HandleFunc("/", makeHandler(homePageHandler))
-	http.HandleFunc("/results/", makeHandler(resultPageHandler))
+	http.HandleFunc("/", makeHandler(HomePageHandler))
+	http.HandleFunc("/results/", makeHandler(ResultPageHandler))
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
