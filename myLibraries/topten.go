@@ -6,7 +6,6 @@ import (
 	"strings"
 )
 
-
 // ConvertToSlice ...
 func ConvertToSlice(input *string) []string {
 	re := regexp.MustCompile("[^a-zA-Z0-9 ]")
@@ -16,6 +15,7 @@ func ConvertToSlice(input *string) []string {
 	text := strings.Split(toLowerCase, " ")
 	return text
 }
+
 // TabulateWords ...
 func TabulateWords(text *[]string) map[string]int {
 	grouped := make(map[string]int)
@@ -34,7 +34,8 @@ type Category struct {
 
 var categoriesArray []Category
 
-func convertToArray(m *map[string]int) []Category {
+// AppendMapToArray ...
+func AppendMapToArray(m *map[string]int) []Category {
 	for key, value := range *m {
 		categoriesArray = append(categoriesArray, Category{key, value})
 	}
@@ -53,7 +54,7 @@ func GetTopTenWords(input *string) []Category {
 	}
 	text := ConvertToSlice(input)
 	tabulate := TabulateWords(&text)
-	convertToArray(&tabulate)
+	AppendMapToArray(&tabulate)
 	sortBasedOnValues(categoriesArray)
 
 	var TopTenWords []Category

@@ -30,3 +30,28 @@ func TestTabulateWords(t *testing.T) {
 		}
 	}
 }
+
+func TestAppendMapToArray(t *testing.T) {
+	input := map[string]int{
+		"hi":   2,
+		"bye":  2,
+		"the":  2,
+		"what": 1,
+		"test": 1,
+		"k":    1,
+	}
+	exp := []Category{
+		{"hi", 2},
+		{"bye", 2},
+		{"the", 2},
+		{"what", 1},
+		{"test", 1},
+		{"k", 1},
+	}
+	for index, value := range AppendMapToArray(&input) {
+		if value != exp[index] {
+			t.Errorf("Expected %v to equal %v", value, exp[index])
+		}
+	}
+
+}
