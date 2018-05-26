@@ -41,6 +41,7 @@ func AppendMapToArray(m *map[string]int) []Category {
 	}
 	return categoriesArray
 }
+
 func sortBasedOnValues(arr []Category) {
 	sort.Slice(arr, func(i, j int) bool {
 		return arr[i].Value > arr[j].Value
